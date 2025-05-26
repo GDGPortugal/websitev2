@@ -6,16 +6,15 @@
 Este é o repositório do site oficial do GDG (Google Developer Groups) Portugal, uma plataforma para centralizar todas as informações, eventos e iniciativas das comunidades GDG espalhadas pelo país. Este site foi densevolvido com o objectivo de facilitar a comunicação entre as comunidades e a promoção de eventos.
 </div>
 
-
 ## 📌 Objetivo
 
 Fornecer um ponto único de acesso para:
+
 - 📅 Eventos GDG em todo o país
 - 📍 Comunidades locais (Lisboa, Porto, Braga, etc.)
 - 📸 Galeria de eventos passados
 - ✨ Notícias e novidades da comunidade
 - 🤝 Formulário de contato e envolvimento com o GDG
-
 
 <h2> Tecnologias utilizadas 🔨</h2>
 
@@ -31,7 +30,6 @@ Fornecer um ponto único de acesso para:
   <li><a href="https://eslint.org/">ESLint</a></li>
   <li><a href="https://prettier.io/">Prettier</a></li>
 </ul>
-
 
 <h2>Rodando com Docker 🐳</h2>
 
@@ -92,9 +90,12 @@ git commit -m "feat: sua mensagem clara aqui"
 
 <p>Pronto! Agora é só aguardar a revisão do seu código 🚀</p>
 
-
 <h2>📝 Licença</h2>
 Esse projeto se encontra sob a licença <strong>MIT</strong>. Para mais informações, acesse o arquivo <strong>LICENSE</strong>.
 
 <hr>
+<<<<<<< Updated upstream
 <p align=center>Made with 💜 by <a href="https://www.instagram.com/gdgportugal/">GDG Portugal</a><p>
+=======
+<p align=center>Made with 💜 by <a href="https://www.instagram.com/gdgportugal/">GDG Portugal</a><p>
+>>>>>>> Stashed changes
