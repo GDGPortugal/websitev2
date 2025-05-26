@@ -1,36 +1,100 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<div align="center">
+  <img src="/assets/images/logo-black.svg" width="200px" />
+</div>
 
-## Getting Started
+<div align="justify">
+Este é o repositório do site oficial do GDG (Google Developer Groups) Portugal, uma plataforma para centralizar todas as informações, eventos e iniciativas das comunidades GDG espalhadas pelo país. Este site foi densevolvido com o objectivo de facilitar a comunicação entre as comunidades e a promoção de eventos.
+</div>
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 📌 Objetivo
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Fornecer um ponto único de acesso para:
+- 📅 Eventos GDG em todo o país
+- 📍 Comunidades locais (Lisboa, Porto, Braga, etc.)
+- 📸 Galeria de eventos passados
+- ✨ Notícias e novidades da comunidade
+- 🤝 Formulário de contato e envolvimento com o GDG
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+<h2> Tecnologias utilizadas 🔨</h2>
 
-## Learn More
+<ul>
+  <li><a href="https://nextjs.org/">Next.js</a></li>
+  <li><a href="https://www.typescriptlang.org/">TypeScript</a></li>
+  <li><a href="https://tailwindcss.com/">Tailwind CSS</a></li>
+  <li><a href="https://www.sanity.io/">Sanity CMS</a></li>
+  <li><a href="https://playwright.dev/">Playwright</a></li>
+  <li><a href="https://github.com/conventional-changelog/commitlint">Commitlint</a></li>
+  <li><a href="https://typicode.github.io/husky/#/">Husky</a></li>
+  <li><a href="https://github.com/okonet/lint-staged">Lint-Staged</a></li>
+  <li><a href="https://eslint.org/">ESLint</a></li>
+  <li><a href="https://prettier.io/">Prettier</a></li>
+</ul>
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+<h2>Rodando com Docker 🐳</h2>
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+<pre><code># Clone este repositório
+git clonegit@github.com:GDGPortugal/websitev2.git
 
-## Deploy on Vercel
+# Acesse a pasta do projeto
+cd websitev2
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+# Construa a imagem Docker
+docker build -t gdg-portugal-app:latest .
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+# Execute o container (expondo a porta 3000)
+docker run -p 3000:3000 gdg-portugal-app:latest
+</code></pre>
+
+<p><strong>💡 Dica:</strong> Se quiser rodar em outra porta do host, altere <code>3000:3000</code> para <code>8080:3000</code>, por exemplo.</p>
+<h2>Como contribuir? 🤝</h2>
+
+<p>Quer ajudar no projeto? Siga esses passos simples:</p>
+
+<ol>
+  <li>⭐ Dê uma estrela no repositório (isso ajuda muito!)</li>
+  <li>Faça um <strong>fork</strong> do repositório</li>
+  <li>Clone o seu fork para sua máquina:</li>
+</ol>
+
+<pre><code>git clone https://github.com/seu-usuario/seu-fork.git
+cd nome-do-projeto
+</code></pre>
+
+<ol start="4">
+  <li>Crie uma nova branch para suas alterações:</li>
+</ol>
+
+<pre><code>git checkout -b nome-da-sua-branch
+</code></pre>
+
+<ol start="5">
+  <li>Faça suas alterações no código</li>
+  <li>Adicione e faça commit das alterações:</li>
+</ol>
+
+<pre><code>git add .
+git commit -m "feat: sua mensagem clara aqui"
+</code></pre>
+
+<ol start="7">
+  <li>Envie suas alterações para seu repositório:</li>
+</ol>
+
+<pre><code>git push origin nome-da-sua-branch
+</code></pre>
+
+<ol start="8">
+  <li>Abra um <strong>Pull Request</strong> aqui no repositório original 🙌</li>
+</ol>
+
+<p>Pronto! Agora é só aguardar a revisão do seu código 🚀</p>
+
+
+<h2>📝 Licença</h2>
+Esse projeto se encontra sob a licença <strong>MIT</strong>. Para mais informações, acesse o arquivo <strong>LICENSE</strong>.
+
+<hr>
+<p align=center>Made with 💜 by <a href="https://www.instagram.com/gdgportugal/">GDG Portugal</a><p>
