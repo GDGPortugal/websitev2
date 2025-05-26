@@ -94,8 +94,4 @@ git commit -m "feat: sua mensagem clara aqui"
 Esse projeto se encontra sob a licença <strong>MIT</strong>. Para mais informações, acesse o arquivo <strong>LICENSE</strong>.
 
 <hr>
-<<<<<<< Updated upstream
 <p align=center>Made with 💜 by <a href="https://www.instagram.com/gdgportugal/">GDG Portugal</a><p>
-=======
-<p align=center>Made with 💜 by <a href="https://www.instagram.com/gdgportugal/">GDG Portugal</a><p>
->>>>>>> Stashed changes
