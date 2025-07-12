@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 export default function CommunityCards() {
   return (
     <div className="mt-20 p-8">
@@ -13,10 +15,12 @@ export default function CommunityCards() {
             </div>
             <div className="mt-8">
               <div className="bg-white rounded-2xl p-4 shadow-lg">
-                <img
+                <Image
                   src="/placeholder.svg?height=200&width=300"
                   alt="Comunidade GDG Portugal"
                   className="w-full h-32 object-cover rounded-lg"
+                  width={300}
+                  height={300}
                 />
               </div>
             </div>
@@ -42,7 +46,6 @@ export default function CommunityCards() {
             </div>
           </div>
 
-          {/* Card 3 - Eventos */}
           <div className="bg-yellow-400 rounded-3xl p-8 text-white relative overflow-hidden h-[500px] flex flex-col">
             <div className="flex-1">
               <h2 className="text-2xl font-bold mb-4">Eventos</h2>
