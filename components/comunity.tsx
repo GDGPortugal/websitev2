@@ -3,7 +3,7 @@ import Image from 'next/image';
 export default function CommunityCards() {
   return (
     <div className="mt-20 p-8">
-      <div className="max-w-7xl mx-auto">
+      <div className="container mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <div className="bg-blue-500 rounded-3xl p-8 text-white relative overflow-hidden h-[500px] flex flex-col">
             <div className="flex-1">
@@ -26,7 +26,6 @@ export default function CommunityCards() {
             </div>
           </div>
 
-          {/* Card 2 - DevFests */}
           <div className="bg-red-500 rounded-3xl p-8 text-white relative overflow-hidden h-[500px] flex flex-col">
             <div className="flex-1">
               <h2 className="text-2xl font-bold mb-4">DevFests</h2>
