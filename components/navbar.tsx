@@ -17,7 +17,7 @@ const Navbar = () => {
 
   return (
     <header className="w-full bg-transparent flex justify-center py-4 z-50">
-      <nav className="w-[90%] bg-black rounded-xl shadow-md px-6 py-4 flex justify-between items-center relative">
+      <nav className="w-[90%] bg-gradient-to-br from-[#111111] via-[#1c1c1e] to-[#004d40]  rounded-xl shadow-md px-6 py-4 flex justify-between items-center relative">
         <Link href="/">
           <Image src={Logo} alt="Batila Blog" height={300} width={300} />
         </Link>
