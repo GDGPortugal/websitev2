@@ -148,8 +148,8 @@ export default function EventsMaps() {
                   src={event.imagem}
                   alt={event.titulo}
                   className="w-full h-32 object-cover rounded-lg"
-                  width={300}
-                  height={300}
+                  width={200}
+                  height={200}
                 />
               </div>
             </div>
