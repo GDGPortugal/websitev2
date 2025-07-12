@@ -9,7 +9,6 @@ const events = [
     categorias: ['GDG Évora', 'Presencial'],
     horario: { inicio: '17:00', fim: '22:00' },
     local: { nome: 'Teatro de Belas Artes', endereco: '3301 Lyon Street, Évora, PT' },
-    preco: '210$ - Grátis para membros',
     link: 'https://seudominio.com/evento/forum-lideres-tecnologia',
     imagem: '/assets/image.png',
   },
@@ -69,7 +68,6 @@ const events = [
     categorias: ['Lisboa', 'Presencial'],
     horario: { inicio: '09:00', fim: '20:00' },
     local: { nome: 'Fábrica de Startups', endereco: 'Rua do Arsenal 72, Lisboa, PT' },
-    preco: '25€',
     link: 'https://seudominio.com/evento/lisboa-codefest',
     imagem: '/assets/image.png',
   },
@@ -81,7 +79,6 @@ const events = [
     categorias: ['Castelo Branco', 'Presencial'],
     horario: { inicio: '16:00', fim: '19:30' },
     local: { nome: 'Auditório Municipal', endereco: 'Av. 1º de Maio, Castelo Branco, PT' },
-    preco: 'Gratuito',
     link: 'https://seudominio.com/evento/datatalks-castelo-branco',
     imagem: '/assets/image.png',
   },
@@ -93,7 +90,6 @@ const events = [
     categorias: ['Famalicão', 'Presencial'],
     horario: { inicio: '11:00', fim: '17:00' },
     local: { nome: 'Espaço Inovação', endereco: 'Rua da Tecnologia 100, Famalicão, PT' },
-    preco: '50€',
     link: 'https://seudominio.com/evento/famalicao-digital-lab',
     imagem: '/assets/image.png',
   },
@@ -124,9 +120,6 @@ export default function EventsMaps() {
                 </p>
                 <p>
                   <strong>📍</strong> {event.local.nome}, {event.local.endereco}
-                </p>
-                <p>
-                  <strong>💰</strong> {event.preco}
                 </p>
               </div>
 
