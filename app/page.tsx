@@ -1,12 +1,9 @@
-'use client';
-
-import About from '@/components/about';
-import Banner from '@/components/banner';
 import CommunityCards from '@/components/comunity';
-import EventsMaps from '@/components/events';
 import { Footer } from '@/components/footer';
-import Galery from '@/components/galery';
 import Navbar from '@/components/navbar';
+import Galery from '@/components/galery';
+import Banner from '@/components/banner';
+import About from '@/components/about';
 
 export default function Home() {
   return (
@@ -15,7 +12,6 @@ export default function Home() {
       <Banner />
       <About />
       <CommunityCards />
-      <EventsMaps />
       <Galery />
       <Footer />
     </div>
