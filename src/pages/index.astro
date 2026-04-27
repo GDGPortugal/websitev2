@@ -1,0 +1,27 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Banner from '../components/Banner.astro';
+import About from '../components/About.astro';
+import CommunityCards from '../components/Community.astro';
+import Gdgs from '../components/Gdgs.astro';
+import Galery from '../components/Galery.astro';
+import EventsDevfest from '../components/Events.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="GDG Portugal — Comunidade Google Developers Group"
+  description="Website oficial do GDG Portugal com eventos, iniciativas e informações da comunidade Google Developers Group em Portugal."
+>
+  <div class="scroll-smooth">
+    <Navbar />
+    <Banner />
+    <About />
+    <CommunityCards />
+    <Gdgs />
+    <Galery />
+    <EventsDevfest />
+    <Footer />
+  </div>
+</Layout>

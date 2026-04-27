@@ -1,0 +1,29 @@
+@import 'tailwindcss';
+
+@import 'tailwindcss';
+
+@layer base {
+  :root {
+    --font-sans: 'Plus Jakarta Sans', sans-serif;
+  }
+
+  html,
+  body,
+  * {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: #fef7e3;
+    scroll-behavior: smooth;
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    font-family: inherit;
+  }
+}

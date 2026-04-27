@@ -1,0 +1,45 @@
+{
+  "name": "websitev2gdgportugal",
+  "type": "module",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "prepare": "husky",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "lint-staged": {
+    "*.{ts,tsx,astro}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{css,json,md,mdx}": [
+      "prettier --write"
+    ]
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^5.0.4",
+    "@tailwindcss/vite": "^4.2.4",
+    "astro": "^6.1.9",
+    "tailwindcss": "^4.2.4"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^8.59.0",
+    "@typescript-eslint/parser": "^8.59.0",
+    "eslint": "^10.2.1",
+    "eslint-plugin-astro": "^1.7.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.4.0",
+    "prettier": "^3.8.3",
+    "prettier-plugin-astro": "^0.14.1",
+    "prettier-plugin-tailwindcss": "^0.7.3"
+  }
+}

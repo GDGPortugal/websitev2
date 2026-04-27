@@ -1,0 +1,72 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  url?: string;
+}
+
+const {
+  title = 'GDG Portugal Comunidade Google Developers Group Em Portugal',
+  description = 'Website oficial do GDG Portugal com eventos, iniciativas e informações da comunidade Google Developers Group em Portugal.',
+  image = '/logos1.png',
+  url = Astro.url.href,
+} = Astro.props;
+---
+
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={url} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={url} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    <meta property="og:locale" content="pt_PT" />
+    <meta property="og:site_name" content="GDG Portugal" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+
+    <meta name="theme-color" content="#4285F4" />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="GDG Portugal" />
+    <meta name="keywords" content="GDG, Google Developers Group, Portugal, eventos, tecnologia, comunidade" />
+
+    <link rel="icon" href="/logos1.png" sizes="any" />
+    <link rel="apple-touch-icon" href="/logos1.png" />
+    
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet" />
+
+    <script type="application/ld+json">
+      {JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "GDG Portugal",
+        "url": "https://gdgportugal.pt",
+        "logo": "https://gdgportugal.pt/logos1.png",
+        "description": description,
+        "sameAs": [
+          "https://twitter.com/gdgportugal",
+          "https://www.linkedin.com/company/gdg-portugal"
+        ]
+      })}
+    </script>
+  </head>
+  <body class="antialiased scroll-smooth">
+    <slot />
+  </body>
+</html>

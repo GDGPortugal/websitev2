@@ -1,0 +1,82 @@
+---
+const socialLinks = [
+    {
+        name: 'Facebook',
+        icon: 'f',
+        url: 'https://www.facebook.com/gdgportugal',
+    },
+    {
+        name: 'LinkedIn',
+        icon: 'in',
+        url: 'https://www.linkedin.com/company/gdg-portugal',
+    },
+    {
+        name: 'Twitter',
+        icon: '𝕏',
+        url: 'https://twitter.com/gdgportugal',
+    },
+    {
+        name: 'Instagram',
+        icon: '📷',
+        url: 'https://www.instagram.com/gdgportugal',
+    },
+];
+---
+
+<section class="py-16 px-4">
+    <div class="max-w-7xl mx-auto">
+        <div
+            class="text-center mb-12"
+        >
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4" style="color: #202124;">
+                Segue-nos nas Redes Sociais
+            </h2>
+            <p class="text-base md:text-lg max-w-2xl mx-auto" style="color: #5F6368;">
+                Mantém-te atualizado com as últimas novidades, eventos e conteúdos da comunidade GDG Portugal
+            </p>
+        </div>
+
+        <div
+            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+        >
+            {socialLinks.map((social) => (
+                <a
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="bg-white rounded-2xl p-8 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col items-center justify-center group hover:scale-105 hover:-translate-y-2"
+                >
+                    <div
+                        class="w-16 h-16 rounded-full flex items-center justify-center mb-4 transition-all duration-300 text-2xl hover:scale-110 hover:rotate-5"
+                        style="background: linear-gradient(to bottom right, #111111, #1c1c1e, #004d40);"
+                    >
+                        <span class="text-white">{social.icon}</span>
+                    </div>
+
+                    <h3 class="text-xl font-bold mb-2 transition-colors duration-300" style="color: #202124;">
+                        {social.name}
+                    </h3>
+
+                    <p class="text-sm text-center" style="color: #5F6368;">
+                        Segue-nos no {social.name}
+                    </p>
+
+                    <div
+                        class="mt-4 px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 text-white hover:opacity-90 hover:scale-105"
+                        style="background: linear-gradient(to right, #111111, #1c1c1e, #004d40);"
+                    >
+                        Seguir
+                    </div>
+                </a>
+            ))}
+        </div>
+
+        <div
+            class="mt-12 text-center"
+        >
+            <p class="text-sm" style="color: #5F6368;">
+                Junta-te à nossa comunidade e partilha as tuas experiências connosco!
+            </p>
+        </div>
+    </div>
+</section>

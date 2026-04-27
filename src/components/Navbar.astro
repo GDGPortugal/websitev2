@@ -1,0 +1,92 @@
+---
+const navItems = [
+  { label: 'Início', href: '/' },
+  { label: 'Eventos', href: '/sustentabilidade' },
+  { label: 'Comunidade', href: '/tecnologia' },
+  { label: 'Patrocinadores', href: '/empreendedorismo' },
+];
+---
+
+<header class="w-full bg-transparent flex justify-center py-4 z-50">
+  <nav class="w-[90%] rounded-xl shadow-md px-6 py-4 flex justify-between items-center relative" style="background: linear-gradient(to bottom right, #111111, #1c1c1e, #004d40);">
+    <a href="/">
+      <img src="/assets/Group 137.svg" alt="GDG Portugal Logo" height="300" width="300" />
+    </a>
+
+    <ul class="hidden md:flex gap-6 text-white items-center">
+      {navItems.map((item) => (
+        <li>
+          <a href={item.href} class="hover:text-teal-300 transition">
+            {item.label}
+          </a>
+        </li>
+      ))}
+      <a
+        href="https://facebook.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="bg-white text-black px-4 py-2 rounded-full hover:bg-gray-200 transition"
+      >
+        Seja um Membro
+      </a>
+    </ul>
+
+    <button
+      id="mobileMenuBtn"
+      class="md:hidden text-white focus:outline-none"
+    >
+      <span id="menuIcon">☰</span>
+    </button>
+
+    <ul id="mobileMenu" class="absolute top-full left-0 w-full bg-black text-white flex flex-col gap-4 p-6 rounded-b-xl md:hidden" style="display: none;">
+      {navItems.map((item) => (
+        <li>
+          <a
+            href={item.href}
+            class="block hover:text-teal-300 transition mobile-nav-link"
+          >
+            {item.label}
+          </a>
+        </li>
+      ))}
+      <a
+        href="https://facebook.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="bg-white text-black px-4 py-2 rounded-full text-center hover:bg-gray-200 transition mobile-nav-link"
+      >
+        Seja um Membro
+      </a>
+    </ul>
+  </nav>
+</header>
+
+<script>
+  const menuBtn = document.getElementById('mobileMenuBtn');
+  const menuIcon = document.getElementById('menuIcon');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+  
+  if (menuBtn && menuIcon && mobileMenu) {
+    let menuOpen = false;
+    
+    menuBtn.addEventListener('click', () => {
+      menuOpen = !menuOpen;
+      if (menuOpen) {
+        mobileMenu.style.display = 'flex';
+        menuIcon.textContent = '✕';
+      } else {
+        mobileMenu.style.display = 'none';
+        menuIcon.textContent = '☰';
+      }
+    });
+    
+    mobileNavLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        menuOpen = false;
+        mobileMenu.style.display = 'none';
+        menuIcon.textContent = '☰';
+      });
+    });
+  }
+</script>

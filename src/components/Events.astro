@@ -1,0 +1,194 @@
+---
+import { getCollection } from 'astro:content';
+
+const allEvents = await getCollection('events');
+const devfests = allEvents
+  .filter((e) => e.data.published)
+  .sort((a, b) => {
+    const months: Record<string, number> = {
+      Janeiro: 1,
+      Fevereiro: 2,
+      Março: 3,
+      Abril: 4,
+      Maio: 5,
+      Junho: 6,
+      Julho: 7,
+      Agosto: 8,
+      Setembro: 9,
+      Outubro: 10,
+      Novembro: 11,
+      Dezembro: 12,
+    };
+    const parse = (d: string) => {
+      const parts = d.split(' de ');
+      const day = parseInt(parts[0]);
+      const month = months[parts[1]] ?? 0;
+      const year = parseInt(parts[2]);
+      return new Date(year, month - 1, day).getTime();
+    };
+    return parse(a.data.date) - parse(b.data.date);
+  });
+
+const uniqueCities = [...new Set(devfests.map((e) => e.data.city))].sort();
+const cities = ['Todos', ...uniqueCities];
+---
+
+<section id="eventos" class="min-h-screen px-4 py-16">
+  <div class="mx-auto max-w-7xl">
+    <div class="mb-12 animate-[fadeIn_0.6s_ease-out] text-center">
+      <h1 class="mb-4 text-3xl font-bold md:text-4xl lg:text-5xl" style="color: #202124;">
+        Próximos DevFests
+      </h1>
+      <p class="text-base md:text-lg" style="color: #5F6368;">
+        Participa nos maiores eventos de tecnologia em Portugal
+      </p>
+    </div>
+
+    <div class="mb-12 flex animate-[fadeIn_0.8s_ease-out] flex-wrap justify-center gap-3">
+      {
+        cities.map((city) => (
+          <button
+            data-city={city}
+            class="city-filter transform rounded-full px-6 py-2.5 text-sm font-medium transition-all duration-300 hover:scale-105"
+            data-is-selected={city === 'Todos' ? 'true' : 'false'}
+          >
+            {city}
+          </button>
+        ))
+      }
+    </div>
+
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3" id="devfests-container">
+      {
+        devfests.map((entry, index) => (
+          <div
+            class="devfest-card transform animate-[fadeInUp_0.6s_ease-out] overflow-hidden rounded-2xl bg-white shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
+            data-city={entry.data.city}
+            style={{
+              animationDelay: `${index * 0.08}s`,
+              animationFillMode: 'both',
+            }}
+          >
+            <div class="relative p-6 pb-4">
+              <div
+                class="absolute top-4 right-4 rounded-full px-3 py-1 text-xs font-semibold text-white"
+                style="background: linear-gradient(to right, #111111, #004d40);"
+              >
+                DevFest 2025
+              </div>
+
+              <div class="flex items-start justify-between pr-24">
+                <h3 class="mb-2 text-xl font-bold" style="color: #202124;">
+                  {entry.data.name}
+                </h3>
+                <div
+                  class="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full text-xs font-bold text-white"
+                  style="background: linear-gradient(to bottom right, #111111, #004d40);"
+                >
+                  GDG
+                </div>
+              </div>
+
+              <div
+                class="mt-3 mb-5 h-1 rounded-full"
+                style="background: linear-gradient(to right, #111111, #1c1c1e, #004d40);"
+              />
+
+              <div class="space-y-3">
+                <div class="flex items-center gap-3">
+                  <span class="text-sm" style="color: #5F6368;">
+                    {entry.data.date}
+                  </span>
+                </div>
+
+                <div class="flex items-center gap-3">
+                  <span class="text-sm font-medium" style="color: #202124;">
+                    {entry.data.venue}
+                  </span>
+                </div>
+
+                <p class="pt-2 text-sm leading-relaxed" style="color: #5F6368;">
+                  {entry.data.description}
+                </p>
+
+                <div class="flex items-center gap-3 pt-2">
+                  <span class="text-sm" style="color: #5F6368;">
+                    {entry.data.time}
+                  </span>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <span class="text-sm" style="color: #5F6368;">
+                    {entry.data.location}
+                  </span>
+                </div>
+
+                <div class="flex items-center gap-3">
+                  <span class="text-sm" style="color: #5F6368;">
+                    {entry.data.ticketType}
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="px-6 pt-2 pb-6">
+              <a
+                href={entry.data.registrationUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex w-full transform items-center justify-center gap-2 rounded-xl py-3 font-semibold text-white transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+                style="background: linear-gradient(to right, #111111, #1c1c1e, #004d40);"
+              >
+                Inscrever-me
+                <span>→</span>
+              </a>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('.city-filter').forEach((button: Element) => {
+    button.addEventListener('click', function (this: Element) {
+      const selectedCity = (this as HTMLElement).getAttribute('data-city');
+
+      document.querySelectorAll('.city-filter').forEach((btn: Element) => {
+        const htmlBtn = btn as HTMLElement;
+        htmlBtn.setAttribute(
+          'data-is-selected',
+          htmlBtn.getAttribute('data-city') === selectedCity ? 'true' : 'false'
+        );
+        if (htmlBtn.getAttribute('data-is-selected') === 'true') {
+          htmlBtn.className =
+            'px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 transform hover:scale-105 city-filter text-white shadow-md';
+          htmlBtn.style.background = 'linear-gradient(to right, #111111, #1c1c1e, #004d40)';
+        } else {
+          htmlBtn.className =
+            'px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 transform hover:scale-105 city-filter bg-white text-gray-700 hover:bg-gray-100 shadow-sm';
+          htmlBtn.style.background = 'white';
+          htmlBtn.style.color = '#374151';
+        }
+      });
+
+      const cards = document.querySelectorAll('.devfest-card');
+      cards.forEach((card: Element) => {
+        const htmlCard = card as HTMLElement;
+        if (selectedCity === 'Todos' || htmlCard.getAttribute('data-city') === selectedCity) {
+          htmlCard.style.display = 'block';
+        } else {
+          htmlCard.style.display = 'none';
+        }
+      });
+    });
+
+    const htmlButton = button as HTMLElement;
+    if (htmlButton.getAttribute('data-is-selected') === 'true') {
+      htmlButton.className =
+        'px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 transform hover:scale-105 city-filter text-white shadow-md';
+      (htmlButton as any).style.background = 'linear-gradient(to right, #111111, #1c1c1e, #004d40)';
+    }
+  });
+</script>

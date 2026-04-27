@@ -1,0 +1,164 @@
+---
+import { getCollection } from 'astro:content';
+
+const allGdgs = await getCollection('gdgs');
+const communities = allGdgs.filter((g) => g.data.published);
+const totalCards = communities.length;
+---
+
+<section id="comunidades" class="min-h-screen px-4 py-16">
+  <div class="mx-auto max-w-7xl">
+    <div class="mb-12 animate-[fadeIn_0.6s_ease-out] rounded-2xl p-6 shadow-lg md:p-12">
+      <div class="mb-12 text-center">
+        <h1
+          class="mb-4 [font-family:var(--font-sans)] text-3xl font-bold text-[#202124] md:text-4xl lg:text-5xl"
+        >
+          Comunidades GDG em Portugal
+        </h1>
+        <p
+          class="mx-auto max-w-3xl [font-family:var(--font-body)] text-base text-[#5F6368] md:text-lg lg:text-xl"
+        >
+          Descobre os grupos locais e junta-te à comunidade tech mais próxima de ti.
+        </p>
+      </div>
+
+      <div class="relative">
+        <button
+          id="prevSlide"
+          class="carousel-nav-btn absolute top-1/2 left-0 z-10 -translate-x-4 -translate-y-1/2 rounded-full p-3 text-white shadow-lg transition-all duration-300 hover:scale-110 hover:opacity-90 md:-translate-x-12"
+          aria-label="Previous slide"
+          style="background: linear-gradient(to right, #111111, #1c1c1e, #004d40);">←</button
+        >
+
+        <button
+          id="nextSlide"
+          class="carousel-nav-btn absolute top-1/2 right-0 z-10 translate-x-4 -translate-y-1/2 rounded-full p-3 text-white shadow-lg transition-all duration-300 hover:scale-110 hover:opacity-90 md:translate-x-12"
+          aria-label="Next slide"
+          style="background: linear-gradient(to right, #111111, #1c1c1e, #004d40);">→</button
+        >
+
+        <div class="overflow-hidden">
+          <div
+            id="carouselTrack"
+            class="flex gap-6 transition-transform duration-500 ease-out"
+            style="transform: translateX(0%);"
+          >
+            {
+              communities.map((entry) => (
+                <div class="w-full flex-shrink-0 sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] xl:w-[calc(25%-18px)]">
+                  <div class="h-full rounded-xl border-2 border-gray-100 bg-white p-6 transition-all duration-300 hover:-translate-y-2 hover:border-gray-200 hover:shadow-xl">
+                    <div
+                      class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl text-white transition-transform duration-300 hover:scale-110"
+                      style="background: linear-gradient(to bottom right, #111111, #1c1c1e, #004d40);"
+                    >
+                      📍
+                    </div>
+
+                    <h3 class="mb-3 [font-family:var(--font-sans)] text-xl font-bold text-[#202124]">
+                      {entry.data.city}
+                    </h3>
+
+                    <p class="mb-4 [font-family:var(--font-body)] text-sm leading-relaxed text-[#5F6368]">
+                      {entry.data.description}
+                    </p>
+
+                    <div class="mb-4 space-y-3 border-b-2 pb-4" style="border-color: #E8EAED;">
+                      <span class="[font-family:var(--font-body)] text-sm font-medium text-[#202124]">
+                        {entry.data.memberCount.toLocaleString('pt-PT')}+ membros
+                      </span>
+                    </div>
+
+                    <a
+                      href={entry.data.meetupUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="flex w-full items-center justify-center gap-2 rounded-lg px-4 py-2.5 [font-family:var(--font-body)] text-sm font-medium text-white transition-all duration-300 hover:scale-105 hover:shadow-md"
+                      style="background: linear-gradient(to right, #111111, #1c1c1e, #004d40);"
+                    >
+                      Ver Comunidade
+                      <span>↗</span>
+                    </a>
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+
+        <div class="mt-8 flex justify-center gap-2" id="dotsContainer">
+          {
+            communities.map((_, index) => (
+              <button
+                class="dot-indicator h-2 rounded-full transition-all duration-300"
+                data-index={index}
+                aria-label={`Go to slide ${index + 1}`}
+                style={
+                  index === 0
+                    ? 'width: 32px; background: linear-gradient(to right, #111111, #004d40);'
+                    : 'width: 8px; background: #d1d5db;'
+                }
+              />
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script define:vars={{ totalCards }}>
+  window.__gdgTotalCards = totalCards;
+</script>
+
+<script>
+  const carouselTrack = document.getElementById('carouselTrack');
+  const prevBtn = document.getElementById('prevSlide');
+  const nextBtn = document.getElementById('nextSlide');
+  const dotIndicators = document.querySelectorAll('.dot-indicator');
+
+  let currentIndex = 0;
+  const totalCards = (window as any).__gdgTotalCards || 8;
+
+  function getCardsPerView() {
+    const width = window.innerWidth;
+    if (width < 768) return 1;
+    if (width < 1024) return 2;
+    return 4;
+  }
+
+  function updateCarousel() {
+    const cardsToShow = getCardsPerView();
+    const translateX = -(currentIndex * (100 / cardsToShow));
+    carouselTrack!.style.transform = `translateX(${translateX}%)`;
+
+    dotIndicators.forEach((dot, index) => {
+      const d = dot as HTMLElement;
+      if (index === currentIndex) {
+        d.style.width = '32px';
+        d.style.background = 'linear-gradient(to right, #111111, #004d40)';
+      } else {
+        d.style.width = '8px';
+        d.style.background = '#d1d5db';
+      }
+    });
+  }
+
+  prevBtn!.addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + totalCards) % totalCards;
+    updateCarousel();
+  });
+
+  nextBtn!.addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % totalCards;
+    updateCarousel();
+  });
+
+  dotIndicators.forEach((dot) => {
+    dot.addEventListener('click', () => {
+      currentIndex = parseInt(dot.getAttribute('data-index')!, 10);
+      updateCarousel();
+    });
+  });
+
+  window.addEventListener('resize', updateCarousel);
+</script>
